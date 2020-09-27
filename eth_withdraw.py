@@ -77,16 +77,17 @@ if __name__ == '__main__':
 
     else:
         print("Start sending TXs.")
-        batch_list = CsvReader(sys.argv[1]).parse()
+        batch_list = CsvReader(sys.argv[1], 2).parse()
         handler = WithdrawELA(api_endpoint=c.API_ENDPOINT,
                               contract_address=c.withdraw_contract_address_test,
                               abi=c.withdraw_contract_abi)
         for add in batch_list:
             _private_key = add[0]
             _source_add = add[1]
-            _target_add = add[2]
-            _amount = add[3]
+            _target_add = "EWRwrmBWpYFwnvAQffcP1vrPCS5sGTgWEB"
+            _amount = 0.0002
 
+            print(f"form address: {add[1]}")
             handler.transfer(_private_key, _source_add, _target_add, _amount,
                              c.gas_price)
         print("All TX Sent.")

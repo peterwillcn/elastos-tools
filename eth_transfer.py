@@ -93,8 +93,8 @@ if __name__ == '__main__':
                            )
 
         for add in batch_list:
-            _target_add = add[0]
-            _amount = add[1]
+            _target_add = add[1]
+            _amount = 1.0
 
             handler.transfer(_target_add, _amount, c.gas_price)
         print("All TX Sent.")
